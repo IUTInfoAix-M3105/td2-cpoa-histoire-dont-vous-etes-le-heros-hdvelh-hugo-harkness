@@ -15,11 +15,14 @@ public class NodeMultiple {
 	public static final int ERROR_STATUS_INDEX_OUT_OF_RANGE = -1;
 	public static final String ERROR_MSG_INDEX_OUT_OF_RANGE = "Index out of range";
 	public static int NODE_MAX_ARITY = 10;
+	private NodeMultiple[] daughters;
+	private Object data;
 
 	/* Overridden methods */
 	@Override
 	public String toString() {
 		/* TO BE COMPLETED */
+		return data.toString();
 	}
 
 	/* Getters/Setters */
@@ -77,6 +80,13 @@ public class NodeMultiple {
 	 */
 	public void addDaughter(NodeMultiple daughter) {
 		/* TO BE COMPLETED */
+		if(daughters == null) return;
+		int i = 0;
+		while (i < daughters.length && daughters[i] == null) {
+			i++;
+		}
+		if(i < daughters.length) daughters[i] = daughter;
+
 	}
 
 	/**
@@ -99,6 +109,12 @@ public class NodeMultiple {
 	 */
 	public boolean hasDaughters() {
 		/* TO BE COMPLETED */
+		if(daughters == null) return false;
+		int i = 0;
+		while (i < daughters.length && daughters[i] == null) {
+			i++;
+		}
+		return i < daughters.length ? true : false;
 	}
 
 	/* Constructors */
@@ -107,6 +123,8 @@ public class NodeMultiple {
 	 */
 	public NodeMultiple() {
 		/* TO BE COMPLETED */
+		data = new Object();
+		daughters = new NodeMultiple[NODE_MAX_ARITY];
 	}
 
 	/**
@@ -117,6 +135,8 @@ public class NodeMultiple {
 	 */
 	public NodeMultiple(Object data) {
 		/* TO BE COMPLETED */
+		this();
+		this.data = data;
+	}
 }
-
 // eof
