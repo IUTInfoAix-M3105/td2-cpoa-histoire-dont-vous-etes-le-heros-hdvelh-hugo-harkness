@@ -135,8 +135,12 @@ public class Event extends NodeMultiple {
 
 	/* Methods */
 	/* TO BE COMPLETED */
-	public void run(){
-		
+	public Event run(){
+		gui.outputln(this.toString());
+		gui.output(PROMPT_ANSWER);
+		playerAnswer = reader.next();
+		chosenPath = interpretAnswer();
+		return getDaughter(chosenPath);
 	}
 	}
 }
